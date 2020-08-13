@@ -1,24 +1,24 @@
 namespace Core
 {
-	using System.Text;
 	using System;
+	using System.Text;
 	public static class PhonewordTranslator
 	{
-		public static String ToNumber(String raw)
+		public static String ToNumber(String text)
 		{
-			if (string.IsNullOrWhiteSpace(raw))
-				return "";
-			else
-				raw = raw.ToUpperInvariant();
+			if (String.IsNullOrWhiteSpace(text))
+				return String.Empty;
 
 			var newNumber = new StringBuilder();
-			foreach (var c in raw)
+			foreach (Char character in text.ToUpperInvariant())
 			{
-				if (" -0123456789".Contains(c))
-					newNumber.Append(c);
+				if (numericCharacters.Contains(character))
+				{
+					newNumber.Append(character);
+				}
 				else
 				{
-					var result = TranslateToNumber(c);
+					var result = TranslateToNumber(character);
 					if (result != null)
 						newNumber.Append(result);
 				}
@@ -26,29 +26,19 @@ namespace Core
 			}
 			return newNumber.ToString();
 		}
-		static bool Contains(this string keyString, char c)
+		static Int32? TranslateToNumber(Char character)
 		{
-			return keyString.IndexOf(c) >= 0;
-		}
-		static int? TranslateToNumber(char c)
-		{
-			if ("ABC".Contains(c))
-				return 2;
-			else if ("DEF".Contains(c))
-				return 3;
-			else if ("GHI".Contains(c))
-				return 4;
-			else if ("JKL".Contains(c))
-				return 5;
-			else if ("MNO".Contains(c))
-				return 6;
-			else if ("PQRS".Contains(c))
-				return 7;
-			else if ("TUV".Contains(c))
-				return 8;
-			else if ("WXYZ".Contains(c))
-				return 9;
+			for (Int32 index = 0; index < letters.Length; index++)
+			{
+				if (letters[index].Contains(character))
+					return numbers[index];
+			}
 			return null;
 		}
+		#region Fields
+		#endregion
+		static readonly String[] letters = { "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ" };
+		static readonly String numericCharacters = " -0123456789";
+		static readonly Int32[] numbers = { 2, 3, 4, 5, 6, 7, 8, 9 };
 	}
 }
