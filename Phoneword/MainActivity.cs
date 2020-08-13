@@ -8,9 +8,9 @@ namespace Phoneword
 	[Activity(Label = "Phone Word", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
-		protected override void OnCreate(Bundle savedInstanceState)
+		protected override void OnCreate(Bundle savedInstanceStateBundle)
 		{
-			base.OnCreate(savedInstanceState);
+			base.OnCreate(savedInstanceStateBundle);
 
 			SetContentView(Resource.Layout.Main);
 
