@@ -1,41 +1,29 @@
-using Android.App;
-using Android.OS;
-using Android.Widget;
-using Core;
-
 namespace Phoneword
 {
-    [Activity(Label = "Phone Word", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+	using Android.App;
+	using Android.OS;
+	using Android.Widget;
+	using Core;
+	using System;
+	[Activity(Label = "Phone Word", MainLauncher = true, Icon = "@drawable/icon")]
+	public class MainActivity : Activity
+	{
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+			SetContentView(Resource.Layout.Main);
 
-            // Get our UI controls from the loaded layout
-            EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
-            Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
-			TextView translatedPhoneWord = FindViewById<TextView>(Resource.Id.TranslatedPhoneWord);
+			Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
+			translateButton.Click += new EventHandler(this.TranslateButton_Click);
+		}
+		private void TranslateButton_Click(Object sender, EventArgs eventArgs)
+		{
+			EditText phoneNumberTextEditText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
+			String translatedNumber = PhonewordTranslator.ToNumber(phoneNumberTextEditText.Text);
 
-			// Add code to translate number
-			string translatedNumber = string.Empty;
-
-            translateButton.Click += (sender, e) =>
-            {
-                // Translate user’s alphanumeric phone number to numeric
-                translatedNumber = PhonewordTranslator.ToNumber(phoneNumberText.Text);
-                if (string.IsNullOrWhiteSpace(translatedNumber))
-                {
-                    translatedPhoneWord.Text = string.Empty;
-                }   
-                else
-                {
-                    translatedPhoneWord.Text = translatedNumber;
-                }
-            };
-        }
-    }
+			TextView translatedPhoneWordTextView = FindViewById<TextView>(Resource.Id.TranslatedPhoneWord);
+			translatedPhoneWordTextView.Text = String.IsNullOrWhiteSpace(translatedNumber) ? String.Empty : translatedNumber;
+		}
+	}
 }
