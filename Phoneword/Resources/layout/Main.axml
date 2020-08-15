@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:text="Enter a Phoneword:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/PhoneNumberText"
-        android:text="1-855-XAMARIN" />
-    <Button
-        android:text="Translate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/TranslateButton" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/TranslatedPhoneWord" />
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:orientation="vertical"
+>
+	<TextView
+		android:id="@+id/PhoneNumberInputLabelTextView"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/PhoneNumberInputLabelTextView_Text"
+		android:textAppearance="?android:attr/textAppearanceLarge" />
+	<EditText
+		android:id="@+id/PhoneNumberInputEditText"
+		android:inputType="number|phone|text"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/PhoneNumberInputEditText_Text" />
+	<Button
+		android:id="@+id/TranslateButton"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/TranslateButton_Text" />
+	<TextView
+		android:id="@+id/TranslatedPhoneWordTextView"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:textAppearance="?android:attr/textAppearanceLarge" />
 </LinearLayout>
