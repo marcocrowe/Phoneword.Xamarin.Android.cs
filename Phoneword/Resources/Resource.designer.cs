@@ -60,16 +60,16 @@ namespace Phoneword
 		{
 			
 			// aapt resource value: 0x7F020000
-			public const int PhoneNumberText = 2130837504;
-			
-			// aapt resource value: 0x7F020003
-			public const int textView1 = 2130837507;
+			public const int PhoneNumberInputEditText = 2130837504;
 			
 			// aapt resource value: 0x7F020001
-			public const int TranslateButton = 2130837505;
+			public const int PhoneNumberInputLabelTextView = 2130837505;
 			
 			// aapt resource value: 0x7F020002
-			public const int TranslatedPhoneWord = 2130837506;
+			public const int TranslateButton = 2130837506;
+			
+			// aapt resource value: 0x7F020003
+			public const int TranslatedPhoneWordTextView = 2130837507;
 			
 			static Id()
 			{
@@ -101,7 +101,13 @@ namespace Phoneword
 		{
 			
 			// aapt resource value: 0x7F040000
-			public const int app_name = 2130968576;
+			public const int PhoneNumberInputEditText_Text = 2130968576;
+			
+			// aapt resource value: 0x7F040001
+			public const int PhoneNumberInputLabelTextView_Text = 2130968577;
+			
+			// aapt resource value: 0x7F040002
+			public const int TranslateButton_Text = 2130968578;
 			
 			static String()
 			{

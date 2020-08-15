@@ -5,7 +5,7 @@ namespace Phoneword
 	using Android.Widget;
 	using Core;
 	using System;
-	[Activity(Label = "Phone Word", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity(Label = "Phoneword", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 		protected override void OnCreate(Bundle savedInstanceStateBundle)
@@ -19,10 +19,10 @@ namespace Phoneword
 		}
 		private void TranslateButton_Click(Object sender, EventArgs eventArgs)
 		{
-			EditText phoneNumberTextEditText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
-			String translatedNumber = PhonewordTranslator.ToNumber(phoneNumberTextEditText.Text);
+			EditText phoneNumberInputEditText = FindViewById<EditText>(Resource.Id.PhoneNumberInputEditText);
+			String translatedNumber = PhonewordTranslator.ToNumber(phoneNumberInputEditText.Text);
 
-			TextView translatedPhoneWordTextView = FindViewById<TextView>(Resource.Id.TranslatedPhoneWord);
+			TextView translatedPhoneWordTextView = FindViewById<TextView>(Resource.Id.TranslatedPhoneWordTextView);
 			translatedPhoneWordTextView.Text = String.IsNullOrWhiteSpace(translatedNumber) ? String.Empty : translatedNumber;
 		}
 	}
